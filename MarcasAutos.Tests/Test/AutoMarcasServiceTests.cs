@@ -5,7 +5,6 @@ using MarcasAutos.Application.Interfaces.Infrastructure.Repositories;
 using MarcasAutos.Application.Queries.Autos;
 using MarcasAutos.Domain.Entities;
 using Moq;
-using System.Collections.Generic;
 
 namespace MarcasAutos.Tests.Test;
 
@@ -30,7 +29,7 @@ public class AutoMarcasServiceTests
         {
             new("Toyota"),
             new("Honda"),
-            new("Mazda"), 
+            new("Mazda"),
         };
 
         List<AutoMarcaDto> dtos = [];

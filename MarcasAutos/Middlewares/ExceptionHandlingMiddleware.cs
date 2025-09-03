@@ -1,4 +1,5 @@
 ﻿using MarcasAutos.Application.DTOs.Generic;
+using MarcasAutos.Domain.Exceptions.Categories;
 
 namespace MarcasAutos.Middlewares;
 
@@ -33,6 +34,7 @@ public class ExceptionHandlingMiddleware
         {
             ArgumentNullException => StatusCodes.Status400BadRequest,
             UnauthorizedAccessException => StatusCodes.Status401Unauthorized,
+            AutosMarcasNotFoundException => StatusCodes.Status400BadRequest,
             KeyNotFoundException => StatusCodes.Status404NotFound,
             _ => StatusCodes.Status500InternalServerError
         };

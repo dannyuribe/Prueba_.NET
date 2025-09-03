@@ -1,6 +1,7 @@
 ﻿using MarcasAutos.Application.DTOs.Autos;
 using MarcasAutos.Application.Interfaces.Infrastructure.Mappings;
 using MarcasAutos.Application.Interfaces.Infrastructure.Repositories;
+using MarcasAutos.Domain.Exceptions.Categories;
 using MarcasAutos.Responses;
 using MediatR;
 
@@ -19,8 +20,9 @@ public class GetAllAutosMarcasQueryHandler : IRequestHandler<GetAllAutosMarcasQu
 
     public async Task<ApiResponse<GetAutoMarcaOutput>> Handle(GetAllAutosMarcasQuery query, CancellationToken cancellationToken )
     {
-        var autosMarcasEntity = await _autosMarcasRepository.GetAllAsync();
-
+        var autosMarcasEntity = await _autosMarcasRepository.GetAllAsync()
+            ?? throw new AutosMarcasNotFoundException();
+                
         var autosMarcas = _autoMarcasMapper.ToMarcaAutoOutput(autosMarcasEntity);
 
         return ApiResponse<GetAutoMarcaOutput>.SuccessResponse(

@@ -1,0 +1,15 @@
+# Ignorar archivos temporales
+*.log
+*.tmp
+
+# Ignorar carpeta bin y obj (C#, .NET)
+bin/
+obj/
+
+# Ignorar node_modules (Node.js, React, etc.)
+node_modules/
+
+# Ignorar configuraciones locales
+.env
+.vscode/
+.vs/
